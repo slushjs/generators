@@ -154,7 +154,14 @@ gulp.task('dist', ['assets', 'fonts', 'vendors', 'styles-dist', 'scripts-dist'],
     .pipe(g.htmlmin(htmlminOpts))
     .pipe(gulp.dest('./dist/'));
 });
-gulp.task('statics-dist', g.serve({root: ['./dist']}));
+
+/**
+ * Deploy
+ */
+gulp.task('deploy', ['dist'], function () {
+  gulp.src("./dist/**/*")
+    .pipe(deploy('git@github.com:slushjs/generators.git'));
+});
 
 /**
  * Watch / Dev server
