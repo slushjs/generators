@@ -1,0 +1,40 @@
+<h2>Generators <small class="pull-right generator-count">{{total}}</small></h2>
+
+<div class="form-group search-form">
+  <input type="text" class="form-control search-field" ng-model="search" placeholder="Filter" id="search-field">
+  <label class="search-field-icon fui-search" for="search-field"></label>
+</div>
+
+<div class="row generator-item" ng-repeat="hit in hits">
+  <div class="col-sm-7">
+    <h3>
+      <a href="https://www.npmjs.org/package/{{hit._id}}">{{hit._id}}</a>
+      <small>{{hit.version}}</small>
+    </h3>
+    <p>{{hit.fields.description[0]}}</p>
+  </div>
+  <div class="col-sm-5 text-right">
+    <h3><small><a href="{{hit.homepage}}" class="link-secondary">{{hit.fields.author[0]}}/{{hit.fields.name[0]}}</a></small></h3>
+    <p>
+      <a href="" ng-repeat="keyword in hit.fields.keywords" class="label pull-right" ng-class="{'label-primary': keyword === 'slushgenerator', 'label-default': keyword !== 'slushgenerator'}">{{keyword}}</a>
+    </p>
+  </div>
+</div>
+<div ng-if="loading">
+  <p>Loading...</p>
+</div>
+<div ng-if="!loading &amp;&amp; !total">
+  <p><strong>No generators found!</strong></p>
+  <p>Or maybe the registry isn't up to date, try: <a href="https://www.npmjs.org/browse/keyword/slushgenerator">keyword 'slushgenerator' at npm</a> instead</p>
+</div>
+<div ng-if="totalPages > 1" class="row text-center">
+  <div class="pagination">
+    <ul>
+      <li class="previous first"><a ng-click="getPage(1)"><span class="fui-arrow-left"></span><span class="fui-arrow-left"></span></a></li>
+      <li class="previous"><a class="fui-arrow-left" ng-click="getPage(page - 1)"></a></li>
+      <li ng-repeat="p in getPages()" ng-class="{'active': p === page}"><a ng-click="getPage(p)">{{p}}</a></li>
+      <li class="next"><a class="fui-arrow-right" ng-click="getPage(page + 1)"></a></li>
+      <li class="next last"><a ng-click="getPage(totalPages)"><span class="fui-arrow-right"></span><span class="fui-arrow-right"></span></a></li>
+    </ul>
+  </div>
+</div>
