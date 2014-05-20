@@ -10,12 +10,12 @@
     "klei-module"
   ],
   "dependencies": {
-    "gulp-angular-filesort": "^0.1.1"
   },
   "devDependencies": {
     "chai": "~1.9.0",
     "event-stream": "~3.1.0",
     "gulp": "~3.5.5",
+    "gulp-angular-filesort": "^0.1.1",
     "gulp-bower-files": "~0.1.11",
     "gulp-cached": "~0.0.3",
     "gulp-clean": "~0.2.4",
@@ -52,8 +52,6 @@
     "karma-script-launcher": "~0.1.0",
     "lazypipe": "~0.2.1",
     "mocha": "~1.17.1",
-    "sort-stream": "~1.0.0",
-    "streamqueue": "~0.0.5",
-    "tiny-lr": "~0.0.5"
+    "streamqueue": "~0.0.5"
   }
 }
