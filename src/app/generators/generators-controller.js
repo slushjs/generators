@@ -1,5 +1,5 @@
 angular.module('generators')
-  .controller('GeneratorsCtrl', function ($scope, $http, $log, $filter) {
+  .controller('GeneratorsCtrl', function ($scope, $http, $log, $filter, $timeout) {
     'use strict';
 
     var PAGE_SIZE = 15;
@@ -18,8 +18,7 @@ angular.module('generators')
         fields: 'name,keywords,rating,description,author,modified,homepage,version,license',
         q: 'keywords:' + KEYWORDS.join(','),
         size: PAGE_SIZE,
-        // sort: 'rating:desc',
-        start: 0
+        from: 0
       };
       $http.get(URL, {params: data})
         .success(function (res) {
@@ -27,10 +26,10 @@ angular.module('generators')
           $scope.hits = generators.slice();
           $scope.total = $scope.hits.length;
           $scope.loaded = true;
-          setTimeout(cb, 0);
+          $timeout(cb, 0);
           if (res.hits.total > generators.length) {
             data.size = res.hits.total - PAGE_SIZE;
-            data.start = PAGE_SIZE;
+            data.from = PAGE_SIZE;
             $http.get(URL, {params: data})
               .success(function (res) {
                 generators.push.apply(generators, res.hits.hits);
