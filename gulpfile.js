@@ -2,7 +2,6 @@
 var gulp = require('gulp'),
     g = require('gulp-load-plugins')({lazy: false}),
     noop = g.util.noop,
-    dirname = require('path').dirname,
     es = require('event-stream'),
     queue = require('streamqueue'),
     lazypipe = require('lazypipe'),
@@ -95,13 +94,21 @@ function templates (opt) {
 /**
  * Vendors
  */
-gulp.task('vendors', function () {
+gulp.task('flat-ui-variables', function () {
+  return gulp.src('./bower_components/flat-ui-official/less/variables.less')
+    .pipe(g.replace('@font-size-base:            18px;', '@font-size-base:            14px;'))
+    .pipe(g.rename('variables-slush.less'))
+    .pipe(gulp.dest('./bower_components/flat-ui-official/less'));
+});
+
+gulp.task('vendors', ['flat-ui-variables'], function () {
   var bowerStream = g.bowerFiles();
   var cssQueue = new queue({objectMode: true})
     .queue(bowerStream.pipe(g.filter('**/*.css')))
     .queue(
       gulp.src('./bower_components/flat-ui-official/less/flat-ui.less')
         .pipe(g.replace('@import "modules/local-fonts";', '// @import "modules/local-fonts";'))
+        .pipe(g.replace('@import "variables";', '@import "variables-slush";'))
         .pipe(g.less())
     )
     .done();
@@ -159,7 +166,7 @@ gulp.task('dist', ['assets', 'fonts', 'vendors', 'styles-dist', 'scripts-dist'],
  * Deploy
  */
 gulp.task('deploy', ['dist'], function () {
-  gulp.src("./dist/**/*")
+  gulp.src('./dist/**/*')
     .pipe(g.ghPages({
       remoteUrl: 'https://github.com/slushjs/generators.git',
       cacheDir: '.tmp'
