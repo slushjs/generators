@@ -8,15 +8,15 @@
 <div class="row generator-item" ng-repeat="hit in hits">
   <div class="col-sm-7">
     <h3>
-      <a href="https://www.npmjs.org/package/{{hit._id}}">{{hit._id}}</a>
-      <small>{{hit.version}}</small>
+      <a href="https://www.npmjs.org/package/{{hit.name[0]}}">{{hit.name[0]}}</a>
+      <small>{{hit.version[0]}}</small>
     </h3>
-    <p>{{hit.fields.description[0]}}</p>
+    <p>{{hit.description[0]}}</p>
   </div>
   <div class="col-sm-5 text-right">
-    <h3><small><a href="{{hit.homepage}}" class="link-secondary">{{hit.fields.author[0]}}/{{hit.fields.name[0]}}</a></small></h3>
+    <h3><small><a ng-href="{{hit.homepage[0]}}" class="link-secondary">{{hit.author[0]}}/{{hit.name[0]}}</a></small></h3>
     <p>
-      <a href="" ng-repeat="keyword in hit.fields.keywords" class="label pull-right" ng-class="{'label-primary': keyword === 'slushgenerator', 'label-default': keyword !== 'slushgenerator'}">{{keyword}}</a>
+      <a href="" ng-repeat="keyword in unique(hit.keywords)" class="label pull-right" ng-class="{'label-primary': keyword === 'slushgenerator', 'label-default': keyword !== 'slushgenerator'}">{{keyword}}</a>
     </p>
   </div>
 </div>

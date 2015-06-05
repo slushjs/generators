@@ -3,7 +3,7 @@ angular.module('generators')
     'use strict';
 
     var PAGE_SIZE = 15;
-    var URL = 'http://registry.gulpjs.com/_search';
+    var URL = 'http://npmsearch.com/query';
     var KEYWORDS = ['slushgenerator'];
     var generators = [];
 
@@ -18,21 +18,22 @@ angular.module('generators')
         fields: 'name,keywords,rating,description,author,modified,homepage,version,license',
         q: 'keywords:' + KEYWORDS.join(','),
         size: PAGE_SIZE,
-        from: 0
+        start: 0
       };
       $http.get(URL, {params: data})
         .success(function (res) {
-          generators.push.apply(generators, res.hits.hits);
+          var hits = res.results || [];
+          generators.push.apply(generators, hits);
           $scope.hits = generators.slice();
           $scope.total = $scope.hits.length;
           $scope.loaded = true;
           $timeout(cb, 0);
-          if (res.hits.total > generators.length) {
-            data.size = res.hits.total - PAGE_SIZE;
-            data.from = PAGE_SIZE;
+          if (res.total > generators.length) {
+            data.size = res.total - PAGE_SIZE;
+            data.start = PAGE_SIZE;
             $http.get(URL, {params: data})
               .success(function (res) {
-                generators.push.apply(generators, res.hits.hits);
+                generators.push.apply(generators, res.results);
                 $scope.total = generators.length;
               });
           }
@@ -49,6 +50,16 @@ angular.module('generators')
         $scope.hits = hits.slice(($scope.page - 1) * PAGE_SIZE, $scope.page * PAGE_SIZE);
       });
     }
+
+    $scope.unique = function (arr) {
+      var result = [];
+      for (var i = 0, len = arr.length; i < len; i++) {
+        if (result.indexOf(arr[i]) < 0) {
+          result.push(arr[i]);
+        }
+      }
+      return result;
+    };
 
     $scope.$watch('total', function (newVal) {
       if (typeof newVal === 'number') {
