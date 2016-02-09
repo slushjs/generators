@@ -7,30 +7,24 @@ generators
 
 ### Requirements
 
-Gulp:
-
-```bash
-npm install -g gulp
-```
-
 Local dependencies:
 
 ```bash
-npm install && bower install
+npm install
 ```
 
 ### Running a dev server
 
 ```bash
-gulp serve
+npm start
 ```
 
-Open: `http://localhost:3000` in your browser.
+Open: `http://localhost:3030` in your browser.
 
 ### Building for production
 
 ```bash
-gulp dist
+npm run dist
 ```
 
 Run it by opening `./dist/index.html` in your browser.
@@ -40,10 +34,9 @@ Run it by opening `./dist/index.html` in your browser.
 **You'll need push access to the repo to do this!**
 
 ```bash
-gulp deploy
+npm run deploy
 ```
 
 ## License
 
-MIT
-
+MIT © [Joakim Carlstein](http://joakim.beng.se)

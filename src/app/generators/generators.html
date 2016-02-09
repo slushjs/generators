@@ -14,7 +14,12 @@
     <p>{{hit.description[0]}}</p>
   </div>
   <div class="col-sm-5 text-right">
-    <h3><small><a ng-href="{{hit.homepage[0]}}" class="link-secondary">{{hit.author[0]}}/{{hit.name[0]}}</a></small></h3>
+    <h3>
+      <small>
+        <a ng-if="hasHomepage(hit)" ng-href="{{hit.homepage[0]}}" class="link-secondary">{{getRepoName(hit)}}</a>
+        <span ng-if="!hasHomepage(hit)" title="No homepage">{{getRepoName(hit)}}</span>
+      </small>
+    </h3>
     <p>
       <a href="" ng-repeat="keyword in unique(hit.keywords)" class="label pull-right" ng-class="{'label-primary': keyword === 'slushgenerator', 'label-default': keyword !== 'slushgenerator'}">{{keyword}}</a>
     </p>

@@ -1,17 +1,21 @@
+'use strict';
+var angular = require('angular');
+var ngRoute = require('angular-route');
+var GeneratorsCtrl = require('./generators/generators-controller.js');
+var generatorsTemplate = require('./generators/generators-template.js');
 
 angular.module('slushSite', [
-  'ngRoute',
-  'generators',
-  'slush-site-templates'
+  ngRoute,
+  GeneratorsCtrl,
+  generatorsTemplate
 ])
-.config(function ($routeProvider) {
-  'use strict';
+.config(['$routeProvider', function ($routeProvider) {
   $routeProvider
     .when('/', {
-      controller: 'GeneratorsCtrl',
-      templateUrl: '/slush-site/generators/generators.html'
+      controller: GeneratorsCtrl,
+      templateUrl: generatorsTemplate
     })
     .otherwise({
       redirectTo: '/'
     });
-});
+}]);
