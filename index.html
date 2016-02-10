@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html ng-app="slushSite">
+  <head>
+    <meta charset="utf-8"/>
+    <title>Slush</title>
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Ubuntu:400,700,400italic">
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <link rel="stylesheet" href="flat-ui.min.css">
+    <link rel="stylesheet" href="slush-generators.min.css">
+  </head>
+  <body>
+    <div class="container">
+      <div class="headline">
+        <a href="http://slushjs.github.io">
+          <h1 class="header-logo">
+            <div class="logo"></div>
+            Slush
+            <small>
+              The streaming scaffolding system.
+            </small>
+          </h1>
+        </a>
+      </div>
+      <ng-view></ng-view>
+    </div>
+    <footer>
+      <div class="container">
+        <h3 class="footer-title">Useful links</h3>
+        <div class="row">
+          <div class="col-xs-4">
+            <p><a href="http://slushjs.github.io">Slush Homepage</a></p>
+          </div>
+          <div class="col-xs-4 text-center">
+            <p><a href="https://github.com/slushjs/slush">Slush @ github</a></p>
+            <p><a href="https://www.npmjs.org/package/slush">Slush @ npm</a></p>
+          </div>
+          <div class="col-xs-4 text-right">
+            <p><a href="http://gulpjs.com">Gulp</a></p>
+          </div>
+        </div>
+        <div class="row">
+          <p>&nbsp;</p>
+        </div>
+        <div class="row">
+          <div class="col-xs-12 text-right">
+            <p><em>By <a href="http://joakim.beng.se">@joakimbeng</a></em></p>
+          </div>
+        </div>
+        <p>&nbsp;</p>
+      </div>
+    </footer>
+
+    <script src="slush-generators.min.js"></script>
+  </body>
+</html>
