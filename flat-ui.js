@@ -21,5 +21,5 @@ less.render(flatUi, {
     console.error(err.stack || err);
     process.exit(1);
   }
-  console.log(out.css.replace('../fonts/', 'fonts/'));
+  console.log(out.css.replace(/\.\.\/fonts\//g, 'fonts/'));
 });
