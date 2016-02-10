@@ -1,6 +1,6 @@
 {
   "name": "slush-site",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "private": true,
   "scripts": {
     "prestart": "npm run -s build",
