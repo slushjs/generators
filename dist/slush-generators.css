@@ -1,0 +1,102 @@
+body {
+  font-family: Ubuntu, sans-serif;
+  color: #000000;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: Ubuntu, sans-serif;
+}
+a {
+  color: #743a6a;
+}
+a:hover,
+a:focus {
+  color: #B163A3;
+}
+.link-secondary {
+  color: #4e9c5c;
+}
+.link-secondary:hover,
+.link-secondary:focus {
+  color: #8bc595;
+}
+h1 {
+  color: #B163A3;
+}
+.header-logo {
+  font-weight: 900;
+  font-size: 60px;
+  line-height: 100px;
+  letter-spacing: -2px;
+  margin: 30px 0 10px 0;
+}
+.header-logo .logo {
+  background: url("../assets/slush.png") center 0 no-repeat;
+  background-size: auto 150px;
+  height: 150px;
+  overflow: hidden;
+  text-indent: -9999em;
+  direction: ltr;
+  display: inline-block;
+  width: 150px;
+  vertical-align: bottom;
+}
+.header-logo small {
+  color: rgba(52, 73, 94, 0.3);
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 0;
+  padding-top: 5px;
+}
+input,
+textarea,
+button {
+  font: inherit;
+}
+.form-group.focus .form-control,
+.form-control:focus {
+  border-color: #B163A3;
+}
+.search-form .search-field:focus + .search-field-icon {
+  color: #B163A3;
+}
+.search-form .search-field-icon {
+  color: #bfc9ca;
+  font-size: 16px;
+  position: absolute;
+  right: 15px;
+  top: 3px;
+  transition: 0.25s;
+}
+.label-primary {
+  background-color: #4e9c5c;
+}
+.label-primary[href]:hover,
+.label-primary[href]:focus {
+  background-color: #8bc595;
+}
+.pagination ul li > a:hover,
+.pagination ul li > a:focus,
+.pagination ul li > span:hover,
+.pagination ul li > span:focus {
+  background-color: #B163A3;
+  border-color: #B163A3;
+  cursor: pointer;
+}
+.generator-item .label {
+  margin: .1em;
+}
+.pagination ul .previous.first > a {
+  margin-right: 0;
+}
+.pagination ul .next.last {
+  margin-left: 0;
+}
+.pagination ul .previous + .previous > a,
+.pagination ul .next:not(.last) > a {
+  border-radius: 0;
+}

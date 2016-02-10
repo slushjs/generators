@@ -8,7 +8,7 @@
     "test": "xo",
     "prebuild:fonts": "rm -rf dist/fonts",
     "prebuild:assets": "rm -rf dist/assets",
-    "build:index": "cp -f src/app/index.html dist/",
+    "build:index": "cp -f src/app/index.html dist/dev.html",
     "build:fonts": "cp -rf node_modules/flat-ui/fonts dist/",
     "build:assets": "cp -rf src/app/assets dist/",
     "build:bootstrap": "cp -f node_modules/flat-ui/bootstrap/css/bootstrap.css dist/",

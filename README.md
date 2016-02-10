@@ -19,7 +19,7 @@ npm install
 npm start
 ```
 
-Open: `http://localhost:3030` in your browser.
+Open: `http://localhost:3030/dev.html` in your browser.
 
 ### Building for production
 
