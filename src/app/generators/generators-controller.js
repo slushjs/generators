@@ -13,7 +13,7 @@ angular.module(GeneratorsCtrl, [])
     '$filter',
     '$timeout',
     function ($scope, $http, $log, $filter, $timeout) {
-      var PAGE_SIZE = 15;
+      var PAGE_SIZE = 20;
       var URL = 'http://npmsearch.com/query';
       var KEYWORDS = ['slushgenerator'];
       var generators = [];
@@ -29,7 +29,8 @@ angular.module(GeneratorsCtrl, [])
           fields: 'name,keywords,rating,description,author,modified,homepage,version,license',
           q: 'keywords:' + KEYWORDS.join(','),
           size: PAGE_SIZE,
-          start: 0
+          start: 0,
+          sort: 'rating:desc'
         };
         $http.get(URL, {params: data})
           .success(function (res) {
